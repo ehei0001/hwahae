@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="36dbfc40-3d40-4d9f-81b6-885e1a7bf2a6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/myapp/home/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/home/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/item/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/item/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/item/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/item/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/settings/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/settings/local.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="E:\django-template-master\hwahae\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Wk92XDUD0RvjhF7GJk59betgCQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunManager" selected="Python.4.runserver">
+    <configuration name="0.convertToFixture" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="hwahae" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ksh\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/etc" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/etc/convertToFixture.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="1.makemigrations" type="PythonConfigurationType" factoryName="Python">
+      <module name="hwahae" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ksh\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="makemigrations item --settings=myapp.settings.local" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="2.migrate" type="PythonConfigurationType" factoryName="Python">
+      <module name="hwahae" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ksh\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="migrate --settings=myapp.settings.local" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="3.loaddata" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="hwahae" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ksh\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="loaddata myapp\item\fixtures\db.json --settings=myapp.settings.local" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="4.runserver" type="PythonConfigurationType" factoryName="Python">
+      <module name="hwahae" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ksh\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver 8080 --settings=myapp.settings.local" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="5.test" type="PythonConfigurationType" factoryName="Python">
+      <module name="hwahae" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ksh\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="test myapp --settings=myapp.settings.local --noinput" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.1.makemigrations" />
+      <item itemvalue="Python.2.migrate" />
+      <item itemvalue="Python.4.runserver" />
+      <item itemvalue="Python.5.test" />
+      <item itemvalue="Python.0.convertToFixture" />
+      <item itemvalue="Python.3.loaddata" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.3.loaddata" />
+        <item itemvalue="Python.0.convertToFixture" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36dbfc40-3d40-4d9f-81b6-885e1a7bf2a6" name="Default Changelist" comment="" />
+      <created>1579682518571</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579682518571</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="757" y="130" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579769853314">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="757" y="130" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579769853314" />
+    <state x="123" y="325" key="#xdebugger.evaluate" timestamp="1579782159750">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="123" y="325" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1579782159750" />
+    <state width="1242" height="318" key="GridCell.Tab.0.bottom" timestamp="1579781680498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1242" height="318" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579781680498" />
+    <state width="1242" height="318" key="GridCell.Tab.0.center" timestamp="1579781680498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1242" height="318" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579781680498" />
+    <state width="1242" height="318" key="GridCell.Tab.0.left" timestamp="1579781680498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1242" height="318" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579781680498" />
+    <state width="1242" height="318" key="GridCell.Tab.0.right" timestamp="1579781680498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1242" height="318" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579781680498" />
+    <state width="1242" height="318" key="GridCell.Tab.1.bottom" timestamp="1579781680498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1242" height="318" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579781680498" />
+    <state width="1242" height="318" key="GridCell.Tab.1.center" timestamp="1579781680498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1242" height="318" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579781680498" />
+    <state width="1242" height="318" key="GridCell.Tab.1.left" timestamp="1579781680498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1242" height="318" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579781680498" />
+    <state width="1242" height="318" key="GridCell.Tab.1.right" timestamp="1579781680498">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1242" height="318" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579781680498" />
+    <state x="144" y="136" key="SettingsEditor" timestamp="1579693399355">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="144" y="136" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579693399355" />
+    <state x="664" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1579682524372">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="664" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579682524372" />
+    <state x="715" y="273" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1579692733753">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="715" y="273" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1579692733753" />
+    <state x="601" y="109" width="1029" height="822" key="find.popup" timestamp="1579764242230">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="601" y="109" width="1029" height="822" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579764242230" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myapp/item/apps.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myapp/item/apps.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

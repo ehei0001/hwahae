@@ -20,4 +20,6 @@ from myapp.home import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', views.index),
+    path('products/', views.products),
+    path('product/<int:item_id>', views.detail),
 ]
