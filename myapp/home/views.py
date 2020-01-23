@@ -3,7 +3,7 @@ import functools
 import operator
 import urllib.parse
 from django.db.models import Q
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 from myapp.item.models import Item
 
@@ -20,39 +20,48 @@ if __debug__:
     JSON_PARAMETERS['sort_keys'] = True
 
 MAX_RECOMMEND_ITEM_COUNT = 3
+RESOURCE_URL = 'https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-birdview/'
 
 
 # Create your views here.
-def index(request):
+def index(request) -> 'HttpResponse':
+    assert isinstance(request, HttpRequest)
+
     return render(request, 'index.html', {})
 
 
-def products(request):
-    '''제품 목록을 반환
+def products(request) -> 'HttpResponse':
+    """제품 목록을 반환
+    """
+    assert isinstance(request, HttpRequest)
 
-    예: skin_type=oily&category=skincare&page=3&include_ingredient=Glycerin
-    '''
-    arguments = __getArguments(request)
+    arguments = _get_arguments(request)
 
-    skinTypeKey = 'skin_type'
-    skinType = arguments.get(skinTypeKey)
-    if skinType is None:
+    skin_type_key = 'skin_type'
+    skin_type = arguments.get(skin_type_key)
+    if skin_type is None:
         return HttpResponse('skin_type field must be exist', status=500)
+    else:
+        assert isinstance(skin_type, str)
 
     entries = Item.objects
-    databaseField = SKIN_TYPE_TO_DATABASE_FIELDS[skinType]
-    entries = entries.order_by(databaseField, 'price')
+
+    if skin_type not in SKIN_TYPE_TO_DATABASE_FIELDS:
+        return HttpResponse('skin_type is wrong', status=500)
+
+    database_field = SKIN_TYPE_TO_DATABASE_FIELDS[skin_type]
+    entries = entries.order_by(database_field, 'price')
 
     if entries:
         category = arguments.get('category')
         if category is not None:
             entries = entries.filter(category__iexact=category)
 
-        queries = __buildIngredientQueries(arguments, 'exclude_ingredient', operator.or_)
+        queries = _build_ingredient_queries(arguments, 'exclude_ingredient', operator.or_)
         if queries is not None:
             entries = entries.exclude(queries)
 
-        queries = __buildIngredientQueries(arguments, 'include_ingredient', operator.and_)
+        queries = _build_ingredient_queries(arguments, 'include_ingredient', operator.and_)
         if queries is not None:
             entries = entries.filter(queries)
 
@@ -60,45 +69,50 @@ def products(request):
         if page is None:
             entries = entries[:ITEM_PER_PAGE]
         else:
-            currentCount = ITEM_PER_PAGE * page
-            entries = entries[currentCount:currentCount + ITEM_PER_PAGE]
+            current_count = ITEM_PER_PAGE * page
+            entries = entries[current_count:current_count + ITEM_PER_PAGE]
 
-        fields = (
-            'id',
-            'name',
-            'price',
-            'ingredients',
-            'monthlySales',
-        )
-        results = []
-        for entry in entries:
-            result = __extractDataFromEntry(entry, fields, True)
-            results.append(result)
+        if entries:
+            fields = (
+                'id',
+                'name',
+                'price',
+                'ingredients',
+                'monthlySales',
+            )
+            results = []
+            for entry in entries:
+                result = _extract_data_from_entry(entry, fields, True)
+                results.append(result)
 
-        return JsonResponse(results, safe=False, json_dumps_params=JSON_PARAMETERS)
-    else:
-        return JsonResponse([], safe=False)
+            return JsonResponse(results, safe=False, json_dumps_params=JSON_PARAMETERS)
+
+    return JsonResponse([], safe=False)
 
 
-def detail(request, item_id):
-    '''상품 세부 정보를 반환
-
-    예: skin_type=oily
-    '''
+def product(request, item_id) -> 'HttpResponse':
+    """상품 세부 정보를 반환
+    """
+    assert isinstance(request, HttpRequest)
     assert isinstance(item_id, int)
 
     entries = Item.objects
-    itemEntry = entries.get(id__exact=item_id)
+    item_entry = entries.get(id__exact=item_id)
 
-    if itemEntry is None:
+    if item_entry is None:
         return HttpResponse('item is not exists', status=500)
 
-    arguments = __getArguments(request)
+    arguments = _get_arguments(request)
 
-    skinTypeKey = 'skin_type'
-    skinType = arguments.get(skinTypeKey)
-    if skinType is None:
+    skin_type = arguments.get('skin_type')
+    if skin_type is None:
         return HttpResponse('skin_type field must be exist', status=500)
+    else:
+        assert isinstance(skin_type, str)
+        assert skin_type
+
+    if skin_type not in SKIN_TYPE_TO_DATABASE_FIELDS:
+        return HttpResponse('skin_type is wrong', status=500)
 
     fields = (
         'id',
@@ -109,41 +123,44 @@ def detail(request, item_id):
         'ingredients',
         'monthlySales',
     )
-    result = __extractDataFromEntry(itemEntry, fields, False)
+    result = _extract_data_from_entry(item_entry, fields, False)
     results = [result]
 
-    recommendItemEntries = entries.filter(category__exact=itemEntry.category)
-    databaseField = SKIN_TYPE_TO_DATABASE_FIELDS[skinType]
-    recommendItemEntries = recommendItemEntries.order_by(databaseField, 'price')
+    recommend_item_entries = entries.filter(category__exact=item_entry.category)
+    recommend_item_entries = recommend_item_entries.exclude(id__exact=item_id)
+    database_field = SKIN_TYPE_TO_DATABASE_FIELDS[skin_type]
+    recommend_item_entries = recommend_item_entries.order_by(database_field, 'price')
 
     fields = (
         'id',
         'name',
         'price',
     )
-    for entry in recommendItemEntries[:MAX_RECOMMEND_ITEM_COUNT]:
-        result = __extractDataFromEntry(entry, fields, True)
+    for entry in recommend_item_entries[:MAX_RECOMMEND_ITEM_COUNT]:
+        result = _extract_data_from_entry(entry, fields, True)
         results.append(result)
 
     return JsonResponse(results, safe=False, json_dumps_params=JSON_PARAMETERS)
 
 
-def __getArguments(request) -> '{str: object}':
+def _get_arguments(request) -> '{str: object}':
+    assert isinstance(request, HttpRequest)
+
     result = {}
 
-    singleArguments = (
+    single_arguments = (
         ('skin_type', str),
         ('category', str),
         ('page', int),
     )
-    for argument, valueType in singleArguments:
+    for argument, valueType in single_arguments:
         value = request.GET.get(argument)
         if value:
             value = valueType(value)
             result[argument] = value
 
-    multipleArguments = ('exclude_ingredient', 'include_ingredient')
-    for argument in multipleArguments:
+    multiple_arguments = ('exclude_ingredient', 'include_ingredient')
+    for argument in multiple_arguments:
         value = request.GET.get(argument)
         if value:
             result[argument] = set(value.split(','))
@@ -151,10 +168,10 @@ def __getArguments(request) -> '{str: object}':
     return result
 
 
-def __buildIngredientQueries(arguments, keyword, operatorType) -> 'None or Q':
+def _build_ingredient_queries(arguments, keyword, operator_type) -> 'None or Q':
     assert isinstance(arguments, collections.abc.Mapping)
     assert isinstance(keyword, str)
-    assert operatorType in (operator.or_, operator.and_)
+    assert operator_type in (operator.or_, operator.and_)
 
     ingredients = arguments.get(keyword)
     if ingredients is None:
@@ -165,24 +182,28 @@ def __buildIngredientQueries(arguments, keyword, operatorType) -> 'None or Q':
             query = Q(ingredients__icontains=ingredient)
             queries.append(query)
 
-        return functools.reduce(operatorType, queries)
+        return functools.reduce(operator_type, queries)
 
 
-def __buildImageURL(imageID, isThumbnail = True) -> str:
-    assert isinstance(imageID, str)
-    assert isinstance(isThumbnail, bool)
+def _build_image_url(image_id, is_thumbnail = True) -> str:
+    assert isinstance(image_id, str)
+    assert isinstance(is_thumbnail, bool)
 
-    if isThumbnail:
-        path = 'https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-birdview/thumbnail/'
+    if is_thumbnail:
+        path = 'thumbnail'
     else:
-        path = 'https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-birdview/image/'
+        path = 'image'
 
-    return urllib.parse.urljoin(path,imageID + '.jpg')
+    file_name = image_id + '.jpg'
+    path = '/'.join((path, file_name))
+
+    return urllib.parse.urljoin(RESOURCE_URL, path)
 
 
-def __extractDataFromEntry(entry, fields, isThumbnail) -> '{str: object}':
+def _extract_data_from_entry(entry, fields, is_thumbnail) -> '{str: object}':
+    assert isinstance(entry, Item)
     assert isinstance(fields, collections.abc.Sequence)
-    assert isinstance(isThumbnail, bool)
+    assert isinstance(is_thumbnail, bool)
 
     result = {}
 
@@ -190,7 +211,7 @@ def __extractDataFromEntry(entry, fields, isThumbnail) -> '{str: object}':
         value = entry.__getattribute__(field)
         result[field] = value
 
-    imageUrl = __buildImageURL(entry.imageId, isThumbnail)
-    result['imgUrl'] = imageUrl
+    image_url = _build_image_url(entry.imageId, is_thumbnail)
+    result['imgUrl'] = image_url
 
     return result

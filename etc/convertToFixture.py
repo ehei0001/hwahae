@@ -1,6 +1,5 @@
 import collections
 import json
-import os
 
 
 db = []
@@ -35,7 +34,6 @@ with open('ingredient-data.json', encoding='utf-8') as f:
             'model': modelName,
             'fields' : record,
         }
-        db.append(record)
 
 with open('item-data.json', encoding='utf-8') as f:
     records = json.load(f)
@@ -68,18 +66,5 @@ with open('item-data.json', encoding='utf-8') as f:
         }
         db.append(record)
 
-for itemID, ingredients in itemToIngredients.items():
-    modelName = '.'.join( ( appName, 'ItemToIngredient' ) )
-
-    for ingredient in ingredients:
-        record = {
-            'model': modelName,
-            'fields': {
-                'item': itemID,
-                'ingredient': ingredient,
-            },
-        }
-        db.append(record)
-
-with open('../myapp/item/fixtures/db.json', 'w', encoding='utf-8') as f:
+with open('../myapp/item/fixtures/items-data.json', 'w', encoding='utf-8') as f:
     json.dump(db, f)
